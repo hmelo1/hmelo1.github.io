@@ -1,7 +1,7 @@
 ---
 layout: post
 title:      "Teaching Myself New Things"
-date:       2018-06-29 14:44:23 +0000
+date:       2018-06-29 10:44:24 -0400
 permalink:  teaching_myself_new_things
 ---
 
