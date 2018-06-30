@@ -12,7 +12,7 @@ I've always had a bit of trouble understanding 3 things in Javascript. So we'll 
 2. Closures
 3. Function declarations vs function expressions.
 
-Javascript is an ever changing language. Thats both one of its best features and one of its worst features. A few things have changed over the years, thanks to the introduction of ES5 and ES6. Originally, Javascript handled variable declarations in a weird way. Initially, the class "var" was used for declarations.
+Javascript is an ever changing language. That’s both one of its best features and one of its worst features. A few things have changed over the years, thanks to the introduction of ES5 and ES6. Originally, Javascript handled variable declarations in a weird way. Initially, the class "var" was used for declarations.
 
 Variable declarations are essentially brought to the top of the current scope its in regardless of where you actually declared the variable. The official term for this is called **hoisting**.
 
@@ -63,12 +63,12 @@ Now that we understand the basics of hoisting and variable declarations we can a
 
 I've found it easiest to stick with 3 simple rules:
 * 1. Use const by default.
-* 2. Use let if oyu have to rebind a variable.
+* 2. Use let if you have to rebind a variable.
 * 3. use var to signal untouched legacy code.
 * 
 (Thanks, https://twitter.com/raganwald/status/564792624934961152) 
 
-**'let'**, essentailly "overrides" our need for var. It allows the variable to be reassigned (similar to var) and the variable can only be used within the block(and sub-blocks) its defined.
+**'let'**, essentially "overrides" our need for var. It allows the variable to be reassigned (similar to var) and the variable can only be used within the block(and sub-blocks) its defined.
 
 Our old friend, **'var'** is the weakest way to identify a variable. It allows the variable to be reassigned, however, the scope of the 'var' is the entire enclosed function.
 
@@ -118,7 +118,7 @@ function showVar() {
 }
 ```
 
-As long as you're within the same scope as the already declared const, it can't be changed. On the topic of scope. Javascript variables can belong to the **“local”** or **“global”** scope. Global variables can be made local with a ter, called closure. Consider the two following pieces of cope.
+As long as you're within the same scope as the already declared const, it can't be changed. On the topic of scope. Javascript variables can belong to the **“local”** or **“global”** scope. Global variables can be made local with a term called closure. Consider the two following pieces of cope.
 
 ```
 function addNumbers(){
@@ -128,7 +128,7 @@ Return a + b
 }
 ```
 
-All the variables are defined inside the fucntion. So they’re local or private to the scope of addNumbers(). However, if we declare the variables outside.
+All the variables are defined inside the function. So they’re local or private to the scope of addNumbers(). However, if we declare the variables outside.
 
 ```
 Var a = 4;
@@ -137,7 +137,7 @@ Function addNumbers(){
 	Return a + b;
 }
 ```
-The variables are declared outside of the function and available in the global scope. Howeverm variables have a pretty short lifespan. They’re creatred when a function is invoked and deleted when the function finishes running. Consider the few following code examples.
+The variables are declared outside of the function and available in the global scope. However, variables have a pretty short lifespan. They’re created when a function is invoked and deleted when the function finishes running. Consider the few following code examples.
 
 ```
 Var num = 4;
@@ -153,7 +153,7 @@ multiplyFour()
 
 The problem arises that any following function can change the num variable without calling multiplyFour.
 
-We can try putting the declaration and the initalization into the function.
+We can try putting the declaration and the initialization into the function.
 
 ```
 Function addFour(){
@@ -167,7 +167,7 @@ addFour()
 ```
 However, this won’t work because the num is getting reset each time we call the function.
 
-Global variables are available to all the functions within it. This means local variables are available to all the variables within the function.We can try using a nested function (a function within a function).
+Global variables are available to all the functions within it. This means local variables are available to all the variables within the function. We can try using a nested function (a function within a function).
 
 ```
 Function addFour(){
@@ -179,7 +179,7 @@ Function addFour(){
 }
 ```
 
-No luck again. We have no way to reach the addThem() function and everytime we run addFour() num is reset.
+No luck again. We have no way to reach the addThem() function and every time we run addFour() num is reset.
 
 We’ll need to use self-invoking functions, closures and a function expression(more on this later)  to get our results.
 ```
@@ -195,7 +195,7 @@ addFour()
 //num is now 8!
 ```
 
-Now this ones a bit of a doozy. So lets explain it, we declare the function as an expression (a bit more of this if you scroll down). The self-invoked function only runs once (So it doesn’t reset our num each time it runs), sets the num to 0, and returns a function expression. The returned function has access to the num but the the global scope doesn’t! This is called a **closure**, where a function has access to the parent scope, even after the parent function has finished running. 
+Now this one’s a bit of a doozy. So let’s explain it, we declare the function as an expression (a bit more of this if you scroll down). The self-invoked function only runs once (So it doesn’t reset our num each time it runs), sets the num to 0, and returns a function expression. The returned function has access to the num but the global scope doesn’t! This is called a **closure**, where a function has access to the parent scope, even after the parent function has finished running. 
 
 
 Now you might be asking, “What’s a function expression?!” Javascript has two ways to create a function. 
@@ -251,3 +251,4 @@ console.log(addFour())
 ```
 
 Or when incorporating Immediately Invoked Function Expressions (IIFE) or self-invoked functions. Same as the above function.
+
